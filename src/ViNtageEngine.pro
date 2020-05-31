@@ -65,6 +65,7 @@ DISTFILES += \
     assets/background003.jpg \
     assets/squaby-sprite-walking.png \
     qml/Constants/SceneConstants.qml \
+    qml/Objects/SelectableItem.qml \
     qml/Objects/SingleSelectOptions.qml \
     qml/Objects/TextRenderer.qml \
     qml/Scenes/GameScene.qml \
