@@ -16,7 +16,7 @@ GameScene {
         y: 100
         width: 100
         height: 100
-        color: "transparent"
+        color: "white"
 
         MouseArea {
             anchors.fill: parent
@@ -32,13 +32,14 @@ GameScene {
 
     SingleSelectOptions {
         id: singleOptions
-        x: 100
+        x: 200
         y: 100
         width: 100
         height: 300
         items: options
 
         SelectableItem {
+            id: muher
             width: 100
             height: 30
             itemIndex: modelData.index
@@ -46,7 +47,7 @@ GameScene {
 
             Rectangle {
                 anchors.fill: parent
-                color: singleOptions.selectedIndexes.filter(a => a === modelData.index).length > 0 ? "blue" : "red"
+                color: muher.selected ? "blue" : "red"
                 Text {
                     text: modelData.text
                 }

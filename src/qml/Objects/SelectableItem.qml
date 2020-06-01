@@ -5,7 +5,7 @@ Rectangle {
     color: "transparent"
     default property alias content: innerContainer.children
     property int itemIndex: -1
-    property bool selected: false
+    property bool selected: selectOptions.selectedIndexes.filter(a => a === modelData.index).length > 0
     property var selectOptions
 
     signal clicked(int index)
