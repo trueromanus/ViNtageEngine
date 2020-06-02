@@ -32,10 +32,25 @@ GameScene {
             anchors.fill: parent
             onPressed: {
                 //gameplayScene.requestChangeScene(SceneConstants.mainMenuSceneName);
-                textRenderer.renderText("I'am <font color='green'><b>bluherka</b></font> muherka <font color='#ff6666'>lapahuherka!!!!!!!</font>")
+                textRenderer.renderText("I'am <font color='green'><b>bluherka</b></font> muherka <font color='#ff6666'>lapahuherka!!!!!!!</font> blablablab bla bla blalabllablab")
             }
         }
     }
+
+    Rectangle {
+        x: 300
+        y: 0
+        width: 100
+        height: 100
+
+        MouseArea {
+            anchors.fill: parent
+            onPressed: {
+                textRenderer.renderTextToEnd();
+            }
+        }
+    }
+
 
     Rectangle {
         x: 100
@@ -57,7 +72,12 @@ GameScene {
          source: "../../assets/idle.png"
          frameRate: 6
        }
-     }
+    }
+
+    FontLoader {
+        id: immortalFont
+        source: "../../assets/Fonts/Brushed.ttf"
+    }
 
     TextRenderer {
         id: textRenderer
@@ -66,7 +86,8 @@ GameScene {
         width: 300
         height: 100
         renderInterval: 80
-        fontPixelSize: 16
+        fontPixelSize: 18
+        fontFamily: immortalFont.name
     }
 
     Rectangle {

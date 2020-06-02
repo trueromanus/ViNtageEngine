@@ -1,6 +1,5 @@
 #include <QApplication>
 #include <FelgoApplication>
-
 #include <QQmlApplicationEngine>
 
 

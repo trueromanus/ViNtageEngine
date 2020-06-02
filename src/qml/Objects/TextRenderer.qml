@@ -9,6 +9,7 @@ EntityBase {
     property string fullText: ""
     property string showedText: ""
     property alias fontPixelSize: textArea.font.pixelSize
+    property alias fontFamily: textArea.font.family
 
     signal renderText(string text)
     signal textShowed()
