@@ -88,6 +88,9 @@ GameScene {
         renderInterval: 80
         fontPixelSize: 18
         fontFamily: immortalFont.name
+        onTextRendered: {
+            console.log("Text rendered!!!!");
+        }
     }
 
     Rectangle {

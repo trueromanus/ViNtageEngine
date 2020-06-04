@@ -8,7 +8,7 @@ GameScene {
 
     FillBackgroundImage {
         targetScene: mainmenuScene
-        source: "../../assets/background001.png"
+        source: "../../assets/test111.jpg"
     }
 
     Rectangle {

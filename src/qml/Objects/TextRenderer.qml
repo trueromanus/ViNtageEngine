@@ -14,6 +14,7 @@ EntityBase {
     signal renderText(string text)
     signal textShowed()
     signal renderTextToEnd()
+    signal textRendered()
 
     Timer {
         id: renderTimer
@@ -24,6 +25,7 @@ EntityBase {
             if (length === textRenderer.fullText.length) {
                 renderTimer.stop();
                 textRenderer.textShowed();
+                textRendered();
             }
 
             const nextChar = textRenderer.fullText.charAt(length);
@@ -38,7 +40,6 @@ EntityBase {
                     if (tagChar === ">") break;
                 }
             }
-            console.log(textRenderer.showedText);
         }
     }
 
@@ -77,5 +78,7 @@ EntityBase {
     onRenderTextToEnd: {
         renderTimer.stop();
         textRenderer.showedText = textRenderer.fullText;
+
+        textRendered();
     }
 }
