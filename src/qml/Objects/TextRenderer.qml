@@ -12,9 +12,9 @@ EntityBase {
     property alias fontFamily: textArea.font.family
 
     signal renderText(string text)
-    signal textShowed()
     signal renderTextToEnd()
     signal textRendered()
+    signal reset()
 
     Timer {
         id: renderTimer
@@ -24,7 +24,6 @@ EntityBase {
             const length = textRenderer.showedText.length;
             if (length === textRenderer.fullText.length) {
                 renderTimer.stop();
-                textRenderer.textShowed();
                 textRendered();
             }
 
@@ -54,7 +53,7 @@ EntityBase {
             color: "white"
             text: textRenderer.showedText
             elide: Text.ElideRight
-            antialiasing: true
+            antialiasing: false
             wrapMode: Text.WordWrap
 
             layer.enabled: true
@@ -80,5 +79,11 @@ EntityBase {
         textRenderer.showedText = textRenderer.fullText;
 
         textRendered();
+    }
+
+    onReset: {
+        renderTimer.stop();
+        textRenderer.showedText = "";
+        textRenderer.fullText = "";
     }
 }
