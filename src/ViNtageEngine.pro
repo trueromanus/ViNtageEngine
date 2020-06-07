@@ -40,6 +40,8 @@ RESOURCES += #    resources.qrc # uncomment for publishing
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp
 
+TEMPLATE = subdirs
+SUBDIRS += tests/VNETests
 
 android {
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
@@ -65,6 +67,7 @@ DISTFILES += \
     assets/background003.jpg \
     assets/squaby-sprite-walking.png \
     qml/Constants/SceneConstants.qml \
+    qml/Objects/ActionSequence.qml \
     qml/Objects/SelectableItem.qml \
     qml/Objects/SingleSelectOptions.qml \
     qml/Objects/TextRenderer.qml \
