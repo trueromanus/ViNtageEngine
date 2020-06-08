@@ -60,18 +60,28 @@ GameScene {
         color: "blue"
     }
 
-    SpriteSequence {
+    Character {
        x: 300
        y: 100
-       width: 400
-       height: 400
-       Sprite {
-         frameCount: 4
-         frameWidth: 900
-         frameHeight: 900
-         source: "../../assets/idle.png"
-         frameRate: 6
-       }
+       spriteHeight: 400
+       spriteWidth: 400
+       spriteOpacity: 0.7
+       frameCount: 4
+       frameWidth: 900
+       frameHeight: 900
+       spriteImage: "../../assets/idle.png"
+    }
+
+    Character {
+       x: 600
+       y: 300
+       spriteHeight: 150
+       spriteWidth: 150
+       spriteOpacity: 1
+       frameCount: 4
+       frameWidth: 128
+       frameHeight: 128
+       spriteImage: "../../assets/creature2.png"
     }
 
     FontLoader {
