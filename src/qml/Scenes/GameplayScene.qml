@@ -11,17 +11,6 @@ GameScene {
         source: "../../assets/background005.jpg"
     }
 
-    /*ParallaxScrollingBackground {
-        x: 100
-        y: 100
-        width: 300
-        height: 300
-        movementVelocity: Qt.point(10,0)
-        ratio: Qt.point(1.0, 1.0)
-        mirrorSecondImage: false
-        sourceImage: "../../assets/felgo-logo.png"
-    }*/
-
     Rectangle {
         x: 0
         y: 0
@@ -46,7 +35,8 @@ GameScene {
         MouseArea {
             anchors.fill: parent
             onPressed: {
-                textRenderer.renderTextToEnd();
+                //textRenderer.renderTextToEnd();
+                actionSequence.runNextAction(-1);
             }
         }
     }
@@ -61,6 +51,8 @@ GameScene {
     }
 
     Character {
+       id: idleCharacter
+       visible: false
        x: 300
        y: 100
        spriteHeight: 400
@@ -73,6 +65,8 @@ GameScene {
     }
 
     Character {
+       id: creatureCharacter
+       visible: false
        x: 600
        y: 300
        spriteHeight: 150
@@ -113,6 +107,32 @@ GameScene {
             anchors.fill: parent
             onPressed: {
                 gameWindow.fullscreen = !gameWindow.fullscreen;
+            }
+        }
+    }
+
+    ActionSequence {
+        id: actionSequence
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+
+        ActionItem {
+            onActivated: {
+                idleCharacter.visible = true;
+            }
+            onDeactivated: {
+                idleCharacter.visible = false;
+            }
+        }
+
+        ActionItem {
+            onActivated: {
+                creatureCharacter.visible = true;
+            }
+            onDeactivated: {
+                creatureCharacter.visible = false;
             }
         }
     }

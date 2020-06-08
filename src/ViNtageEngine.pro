@@ -68,6 +68,7 @@ DISTFILES += \
     assets/squaby-sprite-walking.png \
     qml/Constants/SceneConstants.qml \
     qml/Objects/ActionSequence.qml \
+    qml/Objects/ActionItem.qml \
     qml/Objects/Character.qml \
     qml/Objects/SelectableItem.qml \
     qml/Objects/SingleSelectOptions.qml \
