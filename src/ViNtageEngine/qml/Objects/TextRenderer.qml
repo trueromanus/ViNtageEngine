@@ -8,6 +8,7 @@ EntityBase {
     property alias renderInterval: renderTimer.interval
     property string fullText: ""
     property string showedText: ""
+    property bool textShowedToEnd: true
     property alias fontPixelSize: textArea.font.pixelSize
     property alias fontFamily: textArea.font.family
 
@@ -25,6 +26,7 @@ EntityBase {
             if (length === textRenderer.fullText.length) {
                 renderTimer.stop();
                 textRendered();
+                textRenderer.textShowedToEnd = true;
             }
 
             const nextChar = textRenderer.fullText.charAt(length);
@@ -71,12 +73,14 @@ EntityBase {
     onRenderText: {
         textRenderer.fullText = text;
         textRenderer.showedText = "";
+        textRenderer.textShowedToEnd = false;
         renderTimer.start();
     }
 
     onRenderTextToEnd: {
         renderTimer.stop();
         textRenderer.showedText = textRenderer.fullText;
+        textRenderer.textShowedToEnd = true;
 
         textRendered();
     }
@@ -85,5 +89,6 @@ EntityBase {
         renderTimer.stop();
         textRenderer.showedText = "";
         textRenderer.fullText = "";
+        textRenderer.textShowedToEnd = true;
     }
 }

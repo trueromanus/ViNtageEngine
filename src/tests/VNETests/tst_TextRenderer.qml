@@ -48,5 +48,35 @@ TextRenderer {
 
             textRenderer.reset();
         }
+
+        function test_textShowedToEnd_renderTextToEnd() {
+            verify(textRenderer.textShowedToEnd === true, "textShowedToEnd is not true");
+
+            textRenderer.renderText("blablablabla blabla blablablabla blablablabla blablablablabla");
+
+            wait(50);
+
+            verify(textRenderer.textShowedToEnd === false, "textShowedToEnd is not false");
+
+            textRenderer.renderTextToEnd();
+
+            verify(textRenderer.textShowedToEnd === true, "textShowedToEnd is not true");
+
+            textRenderer.reset();
+        }
+
+        function test_textShowedToEnd_waitToEnd() {
+            textRenderer.renderText("blablablabla");
+
+            wait(50);
+
+            verify(textRenderer.textShowedToEnd === false, "textShowedToEnd is not false");
+
+            wait(150);
+
+            verify(textRenderer.textShowedToEnd === true, "textShowedToEnd is not true");
+
+            textRenderer.reset();
+        }
     }
 }

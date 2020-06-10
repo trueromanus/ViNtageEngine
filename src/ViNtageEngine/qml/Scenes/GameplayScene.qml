@@ -35,8 +35,7 @@ GameScene {
         MouseArea {
             anchors.fill: parent
             onPressed: {
-                //textRenderer.renderTextToEnd();
-                actionSequence.runNextAction(-1);
+                textRenderer.renderTextToEnd();
             }
         }
     }
@@ -109,32 +108,5 @@ GameScene {
                 gameWindow.fullscreen = !gameWindow.fullscreen;
             }
         }
-    }
-
-    ActionSequence {
-        id: actionSequence
-        x: 0
-        y: 0
-        width: 0
-        height: 0
-
-        ActionItem {
-            onActivated: {
-                idleCharacter.visible = true;
-            }
-            onDeactivated: {
-                idleCharacter.visible = false;
-            }
-        }
-
-        ActionItem {
-            onActivated: {
-                creatureCharacter.visible = true;
-            }
-            onDeactivated: {
-                creatureCharacter.visible = false;
-            }
-        }
-    }
-
+    }    
 }
