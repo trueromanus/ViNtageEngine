@@ -12,14 +12,16 @@ EntityBase {
     signal allActionsEnded()
 
     onRunNextAction: {
-        if (root.currentAction > -1) root.children[root.currentAction].deactivated();
-        if (index === -1) {
-            root.currentAction += 1;
-        } else {
-            root.currentAction = index;
-        }
+        if (root.currentAction > -1 && root.currentAction < root.children.length) root.children[root.currentAction].deactivated();
 
-        if (root.currentAction > root.children.lenght) {
+        let newIndex = index;
+        if (index === -1) newIndex = root.currentAction + 1;
+
+        if (newIndex > root.children.length) newIndex = root.children.length;
+
+        root.currentAction = newIndex;
+
+        if (root.currentAction === root.children.length) {
             allActionsEnded();
             return;
         }
