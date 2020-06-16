@@ -85,7 +85,11 @@ GameScene {
        frameCount: 4
        frameWidth: 900
        frameHeight: 900
-       spriteImage: "../../assets/idle.png"
+       frameRate: 6
+
+       Sprite {
+           source: "../../assets/idle.png"
+       }
     }
 
     Character {
@@ -99,7 +103,11 @@ GameScene {
        frameCount: 4
        frameWidth: 128
        frameHeight: 128
-       spriteImage: "../../assets/creature2.png"
+       frameRate: 6
+
+       Sprite {
+           source: "../../assets/creature2.png"
+       }
     }
 
     TextRenderer {

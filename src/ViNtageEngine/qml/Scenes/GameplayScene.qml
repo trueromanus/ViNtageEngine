@@ -11,6 +11,17 @@ GameScene {
         source: "../../assets/background005.jpg"
     }
 
+    /*ParallaxScrollingBackground {
+        x: 100
+        y: 100
+        width: 300
+        height: 300
+        movementVelocity: Qt.point(10,0)
+        ratio: Qt.point(1.0, 1.0)
+        mirrorSecondImage: false
+        sourceImage: "../../assets/felgo-logo.png"
+    }*/
+
     Rectangle {
         x: 0
         y: 0
@@ -36,6 +47,7 @@ GameScene {
             anchors.fill: parent
             onPressed: {
                 textRenderer.renderTextToEnd();
+                cha.setSprite("test2");
             }
         }
     }
@@ -50,31 +62,30 @@ GameScene {
     }
 
     Character {
-       id: idleCharacter
-       visible: false
-       x: 300
-       y: 100
-       spriteHeight: 400
-       spriteWidth: 400
-       spriteOpacity: 0.7
-       frameCount: 4
-       frameWidth: 900
-       frameHeight: 900
-       spriteImage: "../../assets/idle.png"
-    }
+        id: cha
+        x: 300
+        y: 100
+        spriteHeight: 300
+        height: 300
+        spriteWidth: 300
+        width: 300
+        spriteOpacity: 0.7
+        frameCount: 4
+        frameWidth: 900
+        frameHeight: 900
+       //rotation: 90
+       //transformOrigin: Item.Center
 
-    Character {
-       id: creatureCharacter
-       visible: false
-       x: 600
-       y: 300
-       spriteHeight: 150
-       spriteWidth: 150
-       spriteOpacity: 1
-       frameCount: 4
-       frameWidth: 128
-       frameHeight: 128
-       spriteImage: "../../assets/creature2.png"
+       Sprite {
+           name: "test"
+           source: "../../assets/idle.png"
+       }
+       Sprite {
+           name: "test2"
+           source: "../../assets/idle.png"
+           frameRate: 10
+       }
+
     }
 
     FontLoader {
@@ -108,5 +119,6 @@ GameScene {
                 gameWindow.fullscreen = !gameWindow.fullscreen;
             }
         }
-    }    
+    }
+
 }
