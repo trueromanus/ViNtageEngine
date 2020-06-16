@@ -132,6 +132,72 @@ Item {
             object.destroy();
             object2.destroy();
         }
+
+        function test_twoItemsCheckNeedRepeated() {
+            const component = Qt.createComponent('../../ViNtageEngine/qml/Objects/ActionItem.qml');
+
+            let activateFirst = false;
+            let activateSecond = false;
+            let deactivateFirst = false;
+            let deactivateSecond = false;
+            let needRepeatedStep = false;
+
+            const object = component.createObject(actionSequence);
+            object.activated.connect(() => {
+                activateFirst = true;
+            });
+            object.deactivated.connect(() => {
+                deactivateFirst = true;
+            });
+            object.needRepeated.connect((result) => {
+                if (!needRepeatedStep) {
+                    needRepeatedStep = true;
+                    result.repeated = true;
+                    return;
+                }
+            });
+
+            const object2 = component.createObject(actionSequence);
+            object2.activated.connect(() => {
+                activateSecond = true;
+            });
+            object2.deactivated.connect(() => {
+                deactivateSecond = true;
+            });
+
+            actionSequence.runNextAction(-1);
+            compare(activateFirst, true, "activateFirst must be true");
+            compare(needRepeatedStep, false, "needRepeatedStep must be false");
+            compare(activateSecond, false, "activateSecond must be false");
+            compare(deactivateFirst, false, "deactivateFirst must be false");
+            compare(deactivateSecond, false, "deactivateSecond must be false");
+
+            actionSequence.runNextAction(-1);
+            compare(activateFirst, true, "activateFirst must be true");
+            compare(needRepeatedStep, true, "needRepeatedStep must be true");
+            compare(deactivateFirst, false, "deactivateFirst must be false");
+            compare(activateSecond, false, "activateSecond must be false");
+            compare(deactivateSecond, false, "deactivateSecond must be false");
+
+            actionSequence.runNextAction(-1);
+            compare(activateFirst, true, "activateFirst must be true");
+            compare(needRepeatedStep, true, "needRepeatedStep must be true");
+            compare(activateSecond, true, "activateSecond must be true");
+            compare(deactivateFirst, true, "deactivateFirst must be true");
+            compare(deactivateSecond, false, "deactivateSecond must be false");
+
+            actionSequence.runNextAction(-1);
+            compare(activateFirst, true, "activateFirst must be true");
+            compare(needRepeatedStep, true, "needRepeatedStep must be true");
+            compare(activateSecond, true, "activateSecond must be true");
+            compare(deactivateFirst, true, "deactivateFirst must be true");
+            compare(deactivateSecond, true, "deactivateSecond must be true");
+
+            actionSequence.reset();
+
+            object.destroy();
+            object2.destroy();
+        }
     }
 
 }

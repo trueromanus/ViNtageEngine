@@ -14,6 +14,8 @@ Item {
     onRunNextAction: {
         if (!root.children.length) return;
 
+        if (root.currentAction > -1 && root.currentAction < root.children.length && checkNeedRepeated(root.children[root.currentAction])) return;
+
         if (root.currentAction > -1 && root.currentAction < root.children.length) deactivateAction(root.children[root.currentAction]);
 
         let newIndex = index;
@@ -40,4 +42,16 @@ Item {
     function deactivateAction(action) {
         if (action.deactivated) action.deactivated();
     }
+
+    function checkNeedRepeated(action) {
+        if (!action.needRepeated) return false;
+
+        var result = { repeated: false };
+        action.needRepeated(result);
+
+        console.log("repeated", result.repeated);
+
+        return result.repeated;
+    }
+
 }

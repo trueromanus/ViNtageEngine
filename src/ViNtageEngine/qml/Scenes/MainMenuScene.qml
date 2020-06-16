@@ -115,10 +115,9 @@ GameScene {
     ActionSequence {
         id: actionSequence
 
-        ActionItem {
-            onActivated: {
-                textRenderer.renderText("Blablalba blublublulbu mrumrumru bluhrueaksdhfkashdkfjaskdf")
-            }
+        TextRendererActionItem {
+            target: textRenderer
+            text: "Blablalba blublublulbu mrumrumru bluhrueaksdhfkashdkfjaskdf"
         }
 
         ActionItem {
