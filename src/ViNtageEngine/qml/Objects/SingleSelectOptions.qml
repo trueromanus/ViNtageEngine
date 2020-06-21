@@ -11,6 +11,8 @@ EntityBase {
 
     signal setSelected(int index)
     signal selected(int index)
+    signal unselected()
+    signal reset()
 
     Column {
         anchors.fill: parent
@@ -22,10 +24,16 @@ EntityBase {
     }
 
     onSetSelected: {
-        if (root.selectedIndexes.find(a => a === index)) return; // already selected
+        if (root.selectedIndexes.find(a => a === index) > -1) return; // already selected
 
         root.selectedIndexes = [index];
 
         root.selected(index);
+    }
+
+    onReset: {
+        root.selectedIndexes = [];
+
+        root.unselected();
     }
 }
