@@ -11,6 +11,7 @@ EntityBase {
     property bool textShowedToEnd: true
     property alias fontPixelSize: textArea.font.pixelSize
     property alias fontFamily: textArea.font.family
+    property bool showShadow: true
 
     signal renderText(string text)
     signal renderTextToEnd()
@@ -58,7 +59,7 @@ EntityBase {
             antialiasing: false
             wrapMode: Text.WordWrap
 
-            layer.enabled: true
+            layer.enabled: textRenderer.showShadow
             layer.effect: DropShadow {
                 verticalOffset: 1.4
                 horizontalOffset: 1.4
