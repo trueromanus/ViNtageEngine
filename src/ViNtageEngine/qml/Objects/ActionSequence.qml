@@ -49,8 +49,6 @@ Item {
         var result = { repeated: false };
         action.needRepeated(result);
 
-        console.log("repeated", result.repeated);
-
         return result.repeated;
     }
 

@@ -26,35 +26,6 @@ GameScene {
         }
     }
 
-    ListModel {
-        id: options
-    }
-
-    SingleSelectOptions {
-        id: singleOptions
-        x: 200
-        y: 100
-        width: 100
-        height: 300
-        items: options
-
-        SelectableItem {
-            id: muher
-            width: 100
-            height: 30
-            itemIndex: modelData.index
-            selectOptions: singleOptions
-
-            Rectangle {
-                anchors.fill: parent
-                color: muher.selected ? "blue" : "red"
-                Text {
-                    text: modelData.text
-                }
-            }
-        }
-    }
-
     Rectangle {
         x: 0
         y: SceneConstants.sceneHeight - 140
@@ -122,6 +93,56 @@ GameScene {
         fontPixelSize: 18
     }
 
+    ListModel {
+        id: options
+    }
+
+    Item {
+        id: optionsContainer
+        visible: false
+        width: singleOptions.width
+        height: singleOptions.height
+        anchors.centerIn: mainmenuScene.gameWindowAnchorItem
+
+        Rectangle {
+            width: singleOptions.width
+            height: singleOptions.height
+            color: "black"
+            opacity: .4
+        }
+
+        SingleSelectOptions {
+            id: singleOptions
+            visible: true
+            width: 400
+            height: 90
+            items: options
+            onSelected: {
+                actionSequence.runNextAction(-1);
+            }
+
+            SelectableItem {
+                id: muher
+                width: 400
+                height: 30
+                itemIndex: modelData.index
+                selectOptions: singleOptions
+
+                Rectangle {
+                    color: "transparent"
+                    anchors.fill: parent
+                    Text {
+                        anchors.centerIn: parent
+                        text: modelData.text
+                        font.pixelSize: 18
+                        color: muher.selected ? "black" : (muher.hovered ? "yellow" : "white")
+                    }
+                }
+            }
+        }
+    }
+
+
     ActionSequence {
         id: actionSequence
 
@@ -147,6 +168,20 @@ GameScene {
                 creatureCharacter.visible = false;
             }
         }
+
+        ActionItem {
+            onActivated: {
+                optionsContainer.visible = true;
+            }
+            onNeedRepeated: {
+                result.repeated = !singleOptions.selectedIndexes.length;
+            }
+            onDeactivated: {
+                optionsContainer.visible = false;
+            }
+        }
+
+
     }
 
 
