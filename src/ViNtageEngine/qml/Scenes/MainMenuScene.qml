@@ -57,9 +57,11 @@ GameScene {
 
     Rectangle {
         x: 0
-        y: SceneConstants.sceneHeight - 100
-        width: 100
-        height: 100
+        y: SceneConstants.sceneHeight - 140
+        width: SceneConstants.sceneWidth
+        height: 140
+        opacity: .6
+        color: "black"
 
         MouseArea {
             anchors.fill: parent
@@ -112,11 +114,11 @@ GameScene {
 
     TextRenderer {
         id: textRenderer
-        x: 100
-        y: 200
-        width: 300
-        height: 100
-        renderInterval: 80
+        x: 50
+        y: SceneConstants.sceneHeight - 130
+        width: SceneConstants.sceneWidth - 80
+        height: 120
+        renderInterval: 60
         fontPixelSize: 18
     }
 
