@@ -2,6 +2,7 @@ import Felgo 3.0
 import QtQuick 2.12
 import "Scenes"
 import "Constants"
+import "Objects"
 
 GameWindow {
     id: gameWindow
@@ -9,12 +10,20 @@ GameWindow {
     screenWidth: SceneConstants.sceneWidth
     screenHeight: SceneConstants.sceneHeight
     scaleMode: "letterbox"
-    menuBarFelgoEnabled:false
+    menuBarFelgoEnabled: false
 
     property string newScene
 
     EntityManager {
         id: entityManager
+    }
+
+    GameSettings {
+        id: gameSettings
+        onFillDefaultSettings: {
+            defaultOptions.screenResolution = "1920x1080";
+            defaultOptions.textSpeed = 60;
+        }
     }
 
     Timer {

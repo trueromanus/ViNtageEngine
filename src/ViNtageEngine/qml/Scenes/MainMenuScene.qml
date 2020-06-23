@@ -22,6 +22,14 @@ GameScene {
             anchors.fill: parent
             onPressed: {
                 mainmenuScene.requestChangeScene(SceneConstants.gameplaySceneName);
+                /*gameSettings.gameOptions.textSpeed = 70;
+                gameSettings.saveGameSettings();
+
+                gameSettings.changeGameSettings(
+                    (options) => {
+                        options.textSpeed = 80;
+                    }
+                );*/
             }
         }
     }

@@ -12,6 +12,7 @@ EntityBase {
     property int frameWidth: 0
     property int frameHeight: 0
     property int frameCount: 0
+    property string displayName: ""
 
     signal setSprite(string name)
 
