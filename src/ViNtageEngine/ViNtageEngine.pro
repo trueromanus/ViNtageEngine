@@ -73,7 +73,6 @@ DISTFILES += \
     qml/Objects/SelectableItem.qml \
     qml/Objects/SingleSelectOptions.qml \
     qml/Objects/TextRenderer.qml \
-    qml/Scenes/GameScene.qml \
     qml/Scenes/GameplayScene.qml \
     qml/Scenes/MainMenuScene.qml
 

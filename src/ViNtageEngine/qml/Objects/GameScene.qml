@@ -1,7 +1,6 @@
 import QtQuick 2.12
 import Felgo 3.0
 import "../Constants"
-import "../Objects"
 
 Scene {
     enabled: false
