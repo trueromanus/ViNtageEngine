@@ -2,6 +2,7 @@ import QtQuick 2.12
 import Felgo 3.0
 import "../Constants"
 import "../Objects"
+import "../ShaderEffects"
 
 GameScene {
     id: mainmenuScene
@@ -9,6 +10,37 @@ GameScene {
     FillBackgroundImage {
         targetScene: mainmenuScene
         source: "../../assets/test111.jpg"
+    }
+
+    Image {
+        id: sourceImage
+        width: 200
+        height: 200
+        visible: false
+        source: "../../assets/background003.jpg"
+    }
+
+    NumberAnimation {
+        target: effect3
+        property: "sharpen"
+        duration: 600
+        easing.type: Easing.InOutQuad
+        loops: Animation.Infinite
+        from: 0
+        to: 1
+        Component.onCompleted: {
+            start();
+        }
+    }
+
+    SharpenImageEffect {
+        id: effect3
+        x: 200
+        y: 200
+        width: 500
+        height: 300
+        source: sourceImage
+        sharpen: 0.1
     }
 
     Rectangle {
