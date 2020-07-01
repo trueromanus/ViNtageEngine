@@ -20,7 +20,15 @@ GameScene {
         source: "../../assets/background003.jpg"
     }
 
-    NumberAnimation {
+    Image {
+        id: noiseImage
+        width: 200
+        height: 200
+        visible: false
+        source: "../../assets/noise.jpg"
+    }
+
+    /*NumberAnimation {
         target: effect3
         property: "sharpen"
         duration: 600
@@ -31,16 +39,16 @@ GameScene {
         Component.onCompleted: {
             start();
         }
-    }
+    }*/
 
-    SharpenImageEffect {
+    OldMovieImageEffect {
         id: effect3
         x: 200
         y: 200
         width: 500
         height: 300
         source: sourceImage
-        sharpen: 0.1
+        sourceNoise: noiseImage
     }
 
     Rectangle {
