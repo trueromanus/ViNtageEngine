@@ -15,10 +15,9 @@ ActionItem {
     onNeedRepeated: {
         if (!root.target.textShowedToEnd) {
             root.target.renderTextToEnd();
-            return true;
+            result.repeated = true;
+            return;
         }
-
-        return false;
     }
 
     onDeactivated: {
