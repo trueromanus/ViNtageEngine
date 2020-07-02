@@ -12,7 +12,7 @@ ShaderEffect {
 
         void main() {
            vec4 srcColor = texture2D(source, qt_TexCoord0);
-           vec3 luminance = dot(srcColor.xyz, vec3(1, 1, 1));
+           float luminance = dot(srcColor.xyz, vec3(1, 1, 1));
            gl_FragColor = vec4(luminance * filterColor.xyz, srcColor.w);
         }"
 }

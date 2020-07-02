@@ -28,7 +28,7 @@ GameScene {
         source: "../../assets/noise.jpg"
     }
 
-    /*NumberAnimation {
+    NumberAnimation {
         target: effect3
         property: "sharpen"
         duration: 600
@@ -39,7 +39,7 @@ GameScene {
         Component.onCompleted: {
             start();
         }
-    }*/
+    }
 
     OldMovieImageEffect {
         id: effect3
@@ -49,6 +49,7 @@ GameScene {
         height: 300
         source: sourceImage
         sourceNoise: noiseImage
+        scratchAmount: 0.3
     }
 
     Rectangle {

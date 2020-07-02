@@ -27,10 +27,13 @@ ShaderEffect {
             vec2 sc = frame * vec2(0.001, 0.4);
             sc.x = fract(uv.x + sc.x);
             float scratch = texture2D(sourceNoise, sc).r;
-            scratch = 2 * scratch * scratchAmountInv;
-            scratch = 1 - abs(1 - scratch);
-            scratch = max(float(0), scratch);
-            color.rgb += scratch.rrr;
+            scratch = 2.0 * scratch * scratchAmountInv;
+            scratch = 1.0 - abs(1.0 - scratch);
+            scratch = max(float(0.0), scratch);
+            //color.rgb += scratch.rrr;
+            color.r += scratch;
+            color.g += scratch;
+            color.b += scratch;
 
             vec2 rCoord = (((uv + randomCoord1) + randomCoord2) * 0.33);
             vec3 rand = vec3(texture2D(sourceNoise, rCoord));

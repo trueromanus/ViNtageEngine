@@ -13,8 +13,8 @@ ShaderEffect {
         void main() {
             vec2 offset[4];
             vec2 imgSize;
-            imgSize.x = 100;
-            imgSize.y = 100;
+            imgSize.x = 100.0;
+            imgSize.y = 100.0;
             vec2 step = 1.0 / imgSize;
             float step_w = step.x;
             float step_h = step.y;
