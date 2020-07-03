@@ -26,6 +26,11 @@ GameWindow {
         }
     }
 
+    GameSaves {
+        id: gameOptions
+        screenshootTarget: scenes
+    }
+
     Timer {
         id: changeSceneTimer
         interval: 100
@@ -42,14 +47,19 @@ GameWindow {
         color: "black"
     }
 
-    MainMenuScene {
-        id: mainMenuScene
-        onRequestChangeScene: requestChangeState(name)
-    }
+    Item {
+        id: scenes
+        anchors.fill: parent
 
-    GameplayScene {
-        id: gameplayScene
-        onRequestChangeScene: requestChangeState(name)
+        MainMenuScene {
+            id: mainMenuScene
+            onRequestChangeScene: requestChangeState(name)
+        }
+
+        GameplayScene {
+            id: gameplayScene
+            onRequestChangeScene: requestChangeState(name)
+        }
     }
 
     function getScene(name){

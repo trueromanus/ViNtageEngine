@@ -2,7 +2,6 @@ import QtQuick 2.12
 import Felgo 3.0
 import "../Constants"
 import "../Objects"
-import "../ShaderEffects"
 
 GameScene {
     id: mainmenuScene
@@ -10,46 +9,6 @@ GameScene {
     FillBackgroundImage {
         targetScene: mainmenuScene
         source: "../../assets/test111.jpg"
-    }
-
-    Image {
-        id: sourceImage
-        width: 200
-        height: 200
-        visible: false
-        source: "../../assets/background003.jpg"
-    }
-
-    Image {
-        id: noiseImage
-        width: 200
-        height: 200
-        visible: false
-        source: "../../assets/noise.jpg"
-    }
-
-    NumberAnimation {
-        target: effect3
-        property: "sharpen"
-        duration: 600
-        easing.type: Easing.InOutQuad
-        loops: Animation.Infinite
-        from: 0
-        to: 1
-        Component.onCompleted: {
-            start();
-        }
-    }
-
-    OldMovieImageEffect {
-        id: effect3
-        x: 200
-        y: 200
-        width: 500
-        height: 300
-        source: sourceImage
-        sourceNoise: noiseImage
-        scratchAmount: 0.3
     }
 
     Rectangle {
@@ -63,14 +22,17 @@ GameScene {
             anchors.fill: parent
             onPressed: {
                 mainmenuScene.requestChangeScene(SceneConstants.gameplaySceneName);
-                /*gameSettings.gameOptions.textSpeed = 70;
-                gameSettings.saveGameSettings();
-
-                gameSettings.changeGameSettings(
-                    (options) => {
-                        options.textSpeed = 80;
+                /*const testObject = {
+                    test1: 10,
+                    bluherka: "dsafsdfasdfasdgdagdafgdjskfkasd;lf;asd;f;lasd",
+                    druher: [1,2,3,4,5,6,7],
+                    muhahumerka: {
+                        argus: 1212,
+                        bruherka: "muherka"
                     }
-                );*/
+                };
+                gameOptions.saveGameOptions(JSON.stringify(testObject),0);
+                const content = gameOptions.loadGameOptions(0);*/
             }
         }
     }
@@ -87,11 +49,7 @@ GameScene {
             anchors.fill: parent
             onPressed: {
                 //gameWindow.fullscreen = !gameWindow.fullscreen;
-                if (textRenderer.textShowedToEnd) {
-                    actionSequence.runNextAction(-1);
-                } else {
-                    textRenderer.renderTextToEnd();
-                }
+                actionSequence.runNextAction(-1);
             }
         }
     }
@@ -229,10 +187,7 @@ GameScene {
                 optionsContainer.visible = false;
             }
         }
-
-
     }
-
 
     Component.onCompleted: {
         options.append({ model: { text: "bluher1", index: 0 }});

@@ -23,7 +23,7 @@ void GameOptions::setPrefixFile(const QString &prefixFile) noexcept
 void GameOptions::saveGameOptions(QString saveData, int slot)
 {
     if (slot < 0) {
-        qDebug() << "Slot number have to be positive or zero";
+        qDebug() << "Save Game Options: Slot number have to be positive or zero";
         return;
     }
     auto path = m_FullPath + "/" + m_PrefixFile + QString::number(slot) + ".gs";
@@ -38,7 +38,36 @@ void GameOptions::saveGameOptions(QString saveData, int slot)
         return;
     }
 
-    int compressLevel = 5;
-    slotFile.write(qCompress(saveData.toUtf8()), compressLevel);
+    QByteArray byteArray = qCompress(saveData.toUtf8());
+    slotFile.write(byteArray);
     slotFile.close();
+
+    auto pathToSlots = m_FullPath + "/";
+    emit gameOptionsSaved(slot, pathToSlots);
+}
+
+QString GameOptions::loadGameOptions(int slot)
+{
+    if (slot < 0) {
+        qDebug() << "Save Game Options: Slot number have to be positive or zero";
+        return "";
+    }
+
+    auto path = m_FullPath + "/" + m_PrefixFile + QString::number(slot) + ".gs";
+    if (!QFile::exists(path)) {
+        qDebug() << "Save Game Options: Save slot " << slot << " don't exists";
+        return "";
+    }
+
+    QFile slotFile(path);
+    if (!slotFile.open(QIODevice::ReadOnly)) {
+        qDebug() << "Save Game Options: Error opening file for write " + path;
+        return "";
+    }
+
+    auto fileContent = slotFile.readAll();
+    auto content = qUncompress(fileContent);
+    slotFile.close();
+
+    return content;
 }

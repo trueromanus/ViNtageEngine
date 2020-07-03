@@ -3,6 +3,7 @@
 #include <QQmlApplicationEngine>
 #include <FelgoLiveClient>
 #include "globaloptions.h"
+#include "gameoptions.h"
 
 int main(int argc, char *argv[])
 {
@@ -13,8 +14,7 @@ int main(int argc, char *argv[])
     felgo.initialize(&engine);
 
     qmlRegisterType<GlobalOptions>("Vintage", 1, 0, "GlobalOptions");
-
-
+    qmlRegisterType<GameOptions>("Vintage", 1, 0, "GameOptions");
 
     // use this during development
     // for PUBLISHING, use the entry point below
