@@ -4,6 +4,7 @@
 #include <FelgoLiveClient>
 #include "globaloptions.h"
 #include "gameoptions.h"
+#include "localresources.h"
 
 int main(int argc, char *argv[])
 {
@@ -15,6 +16,7 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<GlobalOptions>("Vintage", 1, 0, "GlobalOptions");
     qmlRegisterType<GameOptions>("Vintage", 1, 0, "GameOptions");
+    qmlRegisterType<LocalResources>("Vintage", 1, 0, "LocalResources");
 
     // use this during development
     // for PUBLISHING, use the entry point below

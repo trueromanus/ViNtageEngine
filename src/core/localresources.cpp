@@ -4,7 +4,7 @@
 
 LocalResources::LocalResources(QObject *parent) : QObject(parent), m_BasePath("")
 {
-    m_BasePath = QStandardPaths::AppLocalDataLocation;
+    m_BasePath = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation);
     m_BasePath += "/game";
     QDir().mkpath(m_BasePath);
 

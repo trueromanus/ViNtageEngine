@@ -1,5 +1,6 @@
 import Felgo 3.0
 import QtQuick 2.12
+import Vintage 1.0
 import "Scenes"
 import "Constants"
 import "Objects"
@@ -29,6 +30,10 @@ GameWindow {
     GameSaves {
         id: gameOptions
         screenshootTarget: scenes
+    }
+
+    LocalResources {
+        id: localResources
     }
 
     Timer {
