@@ -18,6 +18,8 @@ int main(int argc, char *argv[])
     qmlRegisterType<GameOptions>("Vintage", 1, 0, "GameOptions");
     qmlRegisterType<LocalResources>("Vintage", 1, 0, "LocalResources");
 
+    if (argc > 1) LocalResources::CustomProjectPath = argv[1];
+
     // use this during development
     // for PUBLISHING, use the entry point below
     /*

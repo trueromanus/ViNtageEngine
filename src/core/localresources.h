@@ -7,15 +7,19 @@ class LocalResources : public QObject
 {
     Q_OBJECT
 
+    Q_PROPERTY(QString basePath READ basePath NOTIFY basePathChanged)
 private:
     QString m_BasePath;
 
 public:
     explicit LocalResources(QObject *parent = nullptr);
 
-    Q_INVOKABLE QString basePath();
+    static QString CustomProjectPath;
 
-signals:
+    QString basePath() const { return m_BasePath; };
+
+signals:   
+    void basePathChanged();
 
 };
 

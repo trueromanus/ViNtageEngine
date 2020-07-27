@@ -33,7 +33,7 @@ GameWindow {
     }
 
     LocalResources {
-        id: localResources
+        id: gameResources
     }
 
     Timer {

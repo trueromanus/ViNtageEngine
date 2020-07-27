@@ -25,6 +25,9 @@ DEPLOYMENTFOLDERS += qmlFolder # comment for publishing
 assetsFolder.source = assets
 DEPLOYMENTFOLDERS += assetsFolder
 
+gameFolder.source = game
+DEPLOYMENTFOLDERS += gameFolder
+
 # Add more folders to ship with the application here
 
 RESOURCES += #    resources.qrc # uncomment for publishing
@@ -64,10 +67,6 @@ macx {
 }
 
 DISTFILES += \
-    assets/background001.jpg \
-    assets/background002.jpg \
-    assets/background003.jpg \
-    assets/squaby-sprite-walking.png \
     qml/Constants/SceneConstants.qml \
     qml/Objects/ActionSequence.qml \
     qml/Objects/ActionItem.qml \
