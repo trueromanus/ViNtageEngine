@@ -34,11 +34,12 @@ Item {
                         gameWindow.activeScene.requestChangeScene(SceneConstants.gameplaySceneName);
                         break;
                     case 1:
-                        root.parent.parent.changePage("../Pages/LoadSave.qml")
+                        root.parent.parent.changePage("../Pages/LoadSave.qml");
                         break;
                     case 2:
                         break;
                     case 3:
+                        root.parent.parent.changePage("../Pages/MainSettings.qml");
                         break;
                     case 4:
                         Qt.quit();
@@ -65,14 +66,6 @@ Item {
                 }
             }
         }
-    }
-
-    Image {
-        x: 100
-        y: 200
-        width: 300
-        height: 300
-        source: gameResources.basePath + "/background001.png"
     }
 
     Component.onCompleted: {
