@@ -9,6 +9,7 @@ GlobalOptions {
     signal fillDefaultSettings(var defaultOptions)
     signal saveGameSettings()
     signal changeGameSettings(var handler)
+    signal loaded()
 
     Component.onCompleted: {
         root.loadOptions();
@@ -20,6 +21,8 @@ GlobalOptions {
             root.gameOptions = defaultOptions;
             saveGameSettings();
         }
+
+        loaded();
     }
 
     onSaveGameSettings: {

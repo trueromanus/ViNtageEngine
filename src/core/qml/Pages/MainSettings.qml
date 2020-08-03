@@ -93,6 +93,7 @@ Item {
                 onPressed: {
                     root.isFullScreen = true;
                     gameWindow.fullscreen = true;
+                    saveFullScreenOption(true);
                 }
             }
 
@@ -115,6 +116,7 @@ Item {
                 onPressed: {
                     root.isFullScreen = false;
                     gameWindow.fullscreen = false;
+                    saveFullScreenOption(false);
                 }
             }
 
@@ -124,5 +126,13 @@ Item {
                 text: "Window"
             }
         }
+    }
+
+    function saveFullScreenOption(isFullScreen) {
+        gameSettings.changeGameSettings(
+            (options) => {
+                options.isFullScreen = isFullScreen;
+            }
+        );
     }
 }

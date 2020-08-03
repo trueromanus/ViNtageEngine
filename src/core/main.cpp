@@ -22,11 +22,11 @@ int main(int argc, char *argv[])
 
     // use this during development
     // for PUBLISHING, use the entry point below
-    /*
-    felgo.setMainQmlFileName(QStringLiteral("qml/Main.qml"));
+
+    /*felgo.setMainQmlFileName(QStringLiteral("qml/Main.qml"));
     engine.load(QUrl(felgo.mainQmlFileName()));
-    felgo.setLicenseKey(PRODUCT_LICENSE_KEY);
-    */
+    felgo.setLicenseKey(PRODUCT_LICENSE_KEY);*/
+
 
 #ifdef QT_DEBUG
     FelgoLiveClient client (&engine);

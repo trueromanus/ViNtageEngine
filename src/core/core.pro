@@ -9,7 +9,7 @@ CONFIG += c++11
 
 # Project identifier and version
 # More information: https://felgo.com/doc/felgo-publishing/#project-configuration
-PRODUCT_IDENTIFIER = com.emptyflow.games.vintageengine
+PRODUCT_IDENTIFIER = com.emptyflow.games.peaceandquietlife
 PRODUCT_VERSION_NAME = 1.0.0
 PRODUCT_VERSION_CODE = 1
 
@@ -24,9 +24,6 @@ DEPLOYMENTFOLDERS += qmlFolder # comment for publishing
 
 assetsFolder.source = assets
 DEPLOYMENTFOLDERS += assetsFolder
-
-gameFolder.source = game
-DEPLOYMENTFOLDERS += gameFolder
 
 # Add more folders to ship with the application here
 

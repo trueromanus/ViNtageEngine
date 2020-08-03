@@ -23,7 +23,14 @@ GameWindow {
         id: gameSettings
         onFillDefaultSettings: {
             defaultOptions.screenResolution = "1920x1080";
+            defaultOptions.isFullScreen = true;
+            defaultOptions.textPanelOpacity = 100;
+            defaultOptions.autoModeTextSpeed = 60;
+            defaultOptions.autoModeSkipTimer = 3;
             defaultOptions.textSpeed = 60;
+        }
+        onLoaded: {
+            if (gameSettings.gameOptions.isFullScreen) gameWindow.fullscreen = true;
         }
     }
 
