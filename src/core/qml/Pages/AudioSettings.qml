@@ -35,18 +35,9 @@ Item {
         }
     }
 
-    Text {
+    Item {
         id: textSettingsLabel
         anchors.left: mainSettingsLabel.right
-        x: 60
-        y: 10
-        color: "white"
-        font.pixelSize: 30
-        text: "Text settings"
-    }
-
-    Item {
-        anchors.left: textSettingsLabel.right
         y: 10
         width: 200
         height: 40
@@ -54,7 +45,7 @@ Item {
         MouseArea {
             anchors.fill: parent
             onPressed: {
-                mainmenuScene.changePage("../Pages/AudioSettings.qml");
+                mainmenuScene.changePage("../Pages/TextSettings.qml");
             }
         }
 
@@ -62,124 +53,101 @@ Item {
             anchors.centerIn: parent
             color: "red"
             font.pixelSize: 30
-            text: "Audio settings"
+            text: "Text settings"
         }
     }
 
+    Text {
+        anchors.left: textSettingsLabel.right
+        x: 60
+        y: 10
+        color: "white"
+        font.pixelSize: 30
+        text: "Audio settings"
+    }
 
     Rectangle {
         x: 60
         y: 100
         width: 700
         height: 400
-        color: "black"
+        color: "#E3D7C5"
 
-        //text panel opacity
+        //Music volume
 
         Item {
-            id: textPanelOpacityLabel
+            id: musicVolumeLabel
             anchors.top: parent.top
             anchors.topMargin: 6
             width: root.leftColumnSize
             Text {
-
-                color: "white"
+                color: "#5C5349"
                 font.pixelSize: 20
-                text: "Text panel opacity:"
+                text: "Music volume:"
             }
         }
 
 
         Slider {
-            id: opacitySlider
-            anchors.left: textPanelOpacityLabel.right
+            id: musicVolumeSlider
+            anchors.left: musicVolumeLabel.right
             width: root.rightColumnSize
             from: 0
             to: 100
             value: 100
         }
 
-        //text speed
+        //Speech volume
 
         Item {
-            id: textSpeedLabel
-            anchors.top: opacitySlider.bottom
+            id: speechVolumeLabel
+            anchors.top: musicVolumeSlider.bottom
             anchors.topMargin: 6
             width: root.leftColumnSize
             Text {
 
-                color: "white"
+                color: "#5C5349"
                 font.pixelSize: 20
-                text: "Text speed:"
+                text: "Speech volume:"
             }
         }
 
         Slider {
-            id: textSpeedSlider
-            anchors.left: textSpeedLabel.right
-            anchors.top: opacitySlider.bottom
+            id: speechVolumeSlider
+            anchors.left: speechVolumeLabel.right
+            anchors.top: musicVolumeSlider.bottom
             width: root.rightColumnSize
             from: 0
             to: 100
-            value: 50
+            value: 100
         }
 
-        //auto mode speed
+        //Effects volume
 
         Item {
-            id: autoSpeedLabel
-            anchors.top: textSpeedSlider.bottom
+            id: effectsLabel
+            anchors.top: speechVolumeSlider.bottom
             anchors.topMargin: 6
             width: root.leftColumnSize
             Text {
 
-                color: "white"
+                color: "#5C5349"
                 font.pixelSize: 20
-                text: "Auto mode speed:"
+                text: "Sfx volume:"
             }
         }
 
 
         Slider {
             id: autoSpeedSlider
-            anchors.left: autoSpeedLabel.right
-            anchors.top: textSpeedSlider.bottom
+            anchors.left: effectsLabel.right
+            anchors.top: speechVolumeSlider.bottom
             width: root.rightColumnSize
             from: 0
             to: 100
-            value: 50
+            value: 100
         }
 
-        //auto mode skip timer speed
-
-        Item {
-            id: autoSkipTimerSpeedLabel
-            anchors.top: autoSpeedSlider.bottom
-            anchors.topMargin: 6
-            width: root.leftColumnSize
-            Text {
-
-                color: "white"
-                font.pixelSize: 20
-                text: "Auto mode skip timer (in seconds):"
-            }
-        }
-
-
-        Slider {
-            id: autoSkipTimerSpeedSlider
-            anchors.left: autoSkipTimerSpeedLabel.right
-            anchors.top: autoSpeedSlider.bottom
-            width: root.rightColumnSize
-            from: 0
-            stepSize: 1
-            to: 20
-            value: 20
-        }
     }
 
-
-    //skip read text or full text ???
-
-    //cancel auto mode after clicking
 }

@@ -8,7 +8,7 @@ Item {
 
     FillBackgroundImage {
         targetScene: mainmenuScene
-        source: "../../assets/test111.jpg"
+        source: gameResources.basePath + "/mainmenu.png"
     }
 
     ListModel {

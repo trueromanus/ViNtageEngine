@@ -10,7 +10,7 @@ Item {
 
     FillBackgroundImage {
         targetScene: mainmenuScene
-        source: gameResources.basePath + "/matrixmenu1.png"
+        source: gameResources.basePath + "/secondmenu.png"
     }
 
     Text {
@@ -23,6 +23,7 @@ Item {
     }
 
     Item {
+        id: textSettingsLabel
         anchors.left: mainSettingsLabel.right
         y: 10
         width: 200
@@ -40,6 +41,27 @@ Item {
             color: "red"
             font.pixelSize: 30
             text: "Text settings"
+        }
+    }
+
+    Item {
+        anchors.left: textSettingsLabel.right
+        y: 10
+        width: 200
+        height: 40
+
+        MouseArea {
+            anchors.fill: parent
+            onPressed: {
+                mainmenuScene.changePage("../Pages/AudioSettings.qml");
+            }
+        }
+
+        Text {
+            anchors.centerIn: parent
+            color: "red"
+            font.pixelSize: 30
+            text: "Audio settings"
         }
     }
 
@@ -103,7 +125,4 @@ Item {
             }
         }
     }
-
-    //window/fullscreen
-
 }
