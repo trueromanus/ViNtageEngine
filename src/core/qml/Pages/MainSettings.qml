@@ -13,56 +13,9 @@ Item {
         source: gameResources.basePath + "/secondmenu.png"
     }
 
-    Text {
-        id: mainSettingsLabel
-        x: 60
-        y: 10
-        color: "white"
-        font.pixelSize: 30
-        text: "Main settings"
-    }
-
-    Item {
-        id: textSettingsLabel
-        anchors.left: mainSettingsLabel.right
-        y: 10
-        width: 200
-        height: 40
-
-        MouseArea {
-            anchors.fill: parent
-            onPressed: {
-                mainmenuScene.changePage("../Pages/TextSettings.qml");
-            }
-        }
-
-        Text {
-            anchors.centerIn: parent
-            color: "red"
-            font.pixelSize: 30
-            text: "Text settings"
-        }
-    }
-
-    Item {
-        anchors.left: textSettingsLabel.right
-        y: 10
-        width: 200
-        height: 40
-
-        MouseArea {
-            anchors.fill: parent
-            onPressed: {
-                mainmenuScene.changePage("../Pages/AudioSettings.qml");
-            }
-        }
-
-        Text {
-            anchors.centerIn: parent
-            color: "red"
-            font.pixelSize: 30
-            text: "Audio settings"
-        }
+    SettingsHeaderTabs {
+        selectedTab: `mainsettings`
+        scene: mainmenuScene
     }
 
     Rectangle {

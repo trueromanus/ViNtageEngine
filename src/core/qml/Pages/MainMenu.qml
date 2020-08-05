@@ -34,12 +34,12 @@ Item {
                         gameWindow.activeScene.requestChangeScene(SceneConstants.gameplaySceneName);
                         break;
                     case 1:
-                        root.parent.parent.changePage("../Pages/LoadSave.qml");
+                        mainmenuScene.changePage("../Pages/LoadSave.qml");
                         break;
                     case 2:
                         break;
                     case 3:
-                        root.parent.parent.changePage("../Pages/MainSettings.qml");
+                        mainmenuScene.changePage("../Pages/MainSettings.qml");
                         break;
                     case 4:
                         Qt.quit();
