@@ -15,22 +15,30 @@ Item {
         id: options
     }
 
+    Rectangle {
+        width: optionsContainer.width
+        height: 300
+        color: "#5C5349"
+        opacity: .8
+        anchors.centerIn: parent
+    }
+
     Item {
         id: optionsContainer
-        width: singleOptions.width
-        height: singleOptions.height
+        width: 340
+        height: 300
         anchors.centerIn: parent
 
         SingleSelectOptions {
             id: singleOptions
             visible: true
-            width: 400
-            height: 90
+            anchors.centerIn: parent
+            width: optionsContainer.width
+            height: 30 * options.count
             items: options
             onSelected: {
                 switch (index) {
                     case 0:
-                        //new game
                         gameWindow.activeScene.requestChangeScene(SceneConstants.gameplaySceneName);
                         break;
                     case 1:
@@ -49,7 +57,7 @@ Item {
 
             SelectableItem {
                 id: selectableItem
-                width: 400
+                width: optionsContainer.width
                 height: 30
                 itemIndex: modelData.index
                 selectOptions: singleOptions
@@ -60,8 +68,8 @@ Item {
                     Text {
                         anchors.centerIn: parent
                         text: selectableItem.hovered ? "> " + modelData.text + " <" : modelData.text
-                        font.pixelSize: 20
-                        color: selectableItem.selected ? "black" : (selectableItem.hovered ? "yellow" : "white")
+                        font.pixelSize: 22
+                        color: selectableItem.selected ? "black" : (selectableItem.hovered ? "white" : "#E3D7C5")
                     }
                 }
             }
