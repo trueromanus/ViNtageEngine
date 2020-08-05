@@ -29,12 +29,47 @@ Item {
         height: 300
         anchors.centerIn: parent
 
+        Item {
+            width: parent.width
+            height: 30
+            anchors.top: parent.top
+            anchors.topMargin: 30
+
+            Text {
+                anchors.horizontalCenter: parent.horizontalCenter
+                font.pixelSize: 28
+                font.family: bloodyFont.name
+                text: "Quiet and Piece Life"
+                color: "#F9EFDE"
+            }
+        }
+
+        Text {
+            anchors.bottom: parent.bottom
+            anchors.left: parent.left
+            anchors.bottomMargin: 4
+            anchors.leftMargin: 4
+            font.pixelSize: 12
+            text: "EmptyFlow"
+            color: "#E3D7C5"
+        }
+
+        Text {
+            anchors.bottom: parent.bottom
+            anchors.right: parent.right
+            anchors.bottomMargin: 4
+            anchors.rightMargin: 4
+            font.pixelSize: 12
+            text: "version 1.0.0"
+            color: "#E3D7C5"
+        }
+
         SingleSelectOptions {
             id: singleOptions
             visible: true
             anchors.centerIn: parent
             width: optionsContainer.width
-            height: 30 * options.count
+            height: 30 * options.count - 30
             items: options
             onSelected: {
                 switch (index) {

@@ -15,6 +15,11 @@ GameWindow {
 
     property string newScene
 
+    FontLoader {
+        id: bloodyFont
+        source: gameResources.basePath + "/fonts/Bloody/BLOODY.ttf"
+    }
+
     EntityManager {
         id: entityManager
     }
