@@ -1,5 +1,6 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
+import QtQuick.Layouts 1.12
 import Felgo 3.0
 import "../Objects"
 
@@ -7,6 +8,8 @@ Item {
     id: root
 
     property bool isFullScreen: false
+    property var windowModeNames: []
+    property var languagesNames: []
 
     FillBackgroundImage {
         targetScene: mainmenuScene
@@ -23,60 +26,72 @@ Item {
         y: 100
         width: 500
         height: 300
-        color: "black"
+        color: "#E3D7C5"
+        opacity: .9
+    }
+
+    GridLayout {
+        x: 60
+        y: 100
+        width: 500
+        rows: 3
+        columns: 2
 
         Text {
-            id: windowModeLabel
-            color: "white"
+            Layout.topMargin: 6
+            Layout.leftMargin: 10
+            Layout.preferredHeight: 30
+            Layout.row: 0
+            Layout.column: 0
+            Layout.alignment: Qt.AlignTop
+            color: "#5C5349"
             font.pixelSize: 20
-            text: "Window mode:"
+            text: `Window mode: `
         }
 
-        Rectangle {
-            id: fullscreenButton
-            anchors.left: windowModeLabel.right
-            anchors.leftMargin: 10
-            width: 140
-            height: 24
-            border.width: root.isFullScreen ? 2 : 0
-            border.color: "red"
+        SelectableBlocks {
+            id: windowModeSelectableBlock
+            Layout.leftMargin: 10
+            Layout.topMargin: 6
+            Layout.preferredHeight: 30
+            Layout.row: 0
+            Layout.column: 1
+            Layout.alignment: Qt.AlignTop
+            names: root.windowModeNames
 
-            MouseArea {
-                anchors.fill: parent
-                onPressed: {
-                    root.isFullScreen = true;
-                    gameWindow.fullscreen = true;
-                    saveFullScreenOption(true);
-                }
-            }
-
-            Text {
-                anchors.centerIn: parent
-                font.pixelSize: 14
-                text: "Fullscreen"
+            onSelected: {
+                const isFullScreen = windowModeSelectableBlock.selectedName === root.windowModeNames[0];
+                gameSettings.gameOptions.isFullScreen = isFullScreen;
+                gameWindow.fullscreen = isFullScreen;
+                saveFullScreenOption(isFullScreen);
             }
         }
-        Rectangle {
-            anchors.left: fullscreenButton.right
-            anchors.leftMargin: 6
-            width: 140
-            height: 24
-            border.width: !root.isFullScreen ? 2 : 0
-            border.color: "red"
 
-            MouseArea {
-                anchors.fill: parent
-                onPressed: {
-                    root.isFullScreen = false;
-                    gameWindow.fullscreen = false;
-                    saveFullScreenOption(false);
-                }
-            }
+        Text {
+            Layout.topMargin: 6
+            Layout.leftMargin: 10
+            Layout.row: 1
+            Layout.column: 0
+            Layout.alignment: Qt.AlignTop
+            color: "#5C5349"
+            font.pixelSize: 20
+            text: `Language: `
+        }
 
-            Text {
-                anchors.centerIn: parent
-                font.pixelSize: 14
-                text: "Window"
+        SelectableBlocks {
+            id: languageSelectableBlock
+            Layout.leftMargin: 10
+            Layout.topMargin: 6
+            Layout.preferredHeight: 30
+            Layout.row: 1
+            Layout.column: 1
+            Layout.alignment: Qt.AlignTop
+            names: root.languagesNames
+
+            onSelected: {
+                const language = (languageSelectableBlock.selectedName === root.languagesNames[0]) ? `en` : `ru`;
+                gameSettings.gameOptions.language = language;
+                saveLanguage(language);
             }
         }
     }
@@ -87,5 +102,20 @@ Item {
                 options.isFullScreen = isFullScreen;
             }
         );
+    }
+
+    function saveLanguage(language) {
+        gameSettings.changeGameSettings(
+            (options) => {
+                options.language = language;
+            }
+        );
+    }
+
+    Component.onCompleted: {
+        root.windowModeNames = [`Fullscreen`, `Window`];
+        root.languagesNames = [`English`, `Русский`];
+        windowModeSelectableBlock.selectedName = gameSettings.gameOptions.isFullScreen ? root.windowModeNames[0] : root.windowModeNames[1];
+        languageSelectableBlock.selectedName = gameSettings.gameOptions.language === `en` ? root.languagesNames[0] : root.languagesNames[1];
     }
 }

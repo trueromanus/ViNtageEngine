@@ -60,7 +60,7 @@ Item {
             anchors.bottomMargin: 4
             anchors.rightMargin: 4
             font.pixelSize: 12
-            text: "version 1.0.0"
+            text: "version 0.0.2 alpha"
             color: "#E3D7C5"
         }
 
@@ -112,9 +112,9 @@ Item {
     }
 
     Component.onCompleted: {
-        options.append({ model: { text: "New game", index: 0 }});
-        options.append({ model: { text: "Load game", index: 1 }});
-        options.append({ model: { text: "Gallery", index: 2 }});
+        options.append({ model: { text: "Create game", index: 0 }});
+        options.append({ model: { text: "Join to game", index: 1 }});
+        options.append({ model: { text: "Offline chapters", index: 2 }});
         options.append({ model: { text: "Settings", index: 3 }});
         options.append({ model: { text: "Exit", index: 4 }});
     }

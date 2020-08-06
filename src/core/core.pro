@@ -74,7 +74,8 @@ DISTFILES += \
     qml/Scenes/GameplayScene.qml \
     qml/Scenes/MainMenuScene.qml \
     qml/Pages/SettingsHeaderTabs.qml \
-    qml/Pages/SettingsHeaderTab.qml
+    qml/Pages/SettingsHeaderTab.qml \
+    qml/Pages/SelectableBlocks.qml
 
 HEADERS += \
     gameoptions.h \
