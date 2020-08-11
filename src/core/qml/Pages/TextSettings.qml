@@ -23,8 +23,8 @@ Item {
         x: 60
         y: 100
         width: 700
-        height: 400
-        color: "black"
+        height: 460
+        color: "#E3D7C5"
 
         //text panel opacity
 
@@ -32,10 +32,11 @@ Item {
             id: textPanelOpacityLabel
             anchors.top: parent.top
             anchors.topMargin: 6
+            anchors.left: parent.left
+            anchors.leftMargin: 10
             width: root.leftColumnSize
             Text {
-
-                color: "white"
+                color: "#5C5349"
                 font.pixelSize: 20
                 text: "Text panel opacity:"
             }
@@ -49,6 +50,9 @@ Item {
             from: 0
             to: 100
             value: 100
+            onMoved: {
+                saveTextPanelOpacity(value);
+            }
         }
 
         //text speed
@@ -57,10 +61,11 @@ Item {
             id: textSpeedLabel
             anchors.top: opacitySlider.bottom
             anchors.topMargin: 6
+            anchors.left: parent.left
+            anchors.leftMargin: 10
             width: root.leftColumnSize
             Text {
-
-                color: "white"
+                color: "#5C5349"
                 font.pixelSize: 20
                 text: "Text speed:"
             }
@@ -74,6 +79,9 @@ Item {
             from: 0
             to: 100
             value: 50
+            onMoved: {
+                saveTextSpeed(value);
+            }
         }
 
         //auto mode speed
@@ -82,10 +90,11 @@ Item {
             id: autoSpeedLabel
             anchors.top: textSpeedSlider.bottom
             anchors.topMargin: 6
+            anchors.left: parent.left
+            anchors.leftMargin: 10
             width: root.leftColumnSize
             Text {
-
-                color: "white"
+                color: "#5C5349"
                 font.pixelSize: 20
                 text: "Auto mode speed:"
             }
@@ -100,6 +109,9 @@ Item {
             from: 0
             to: 100
             value: 50
+            onMoved: {
+                saveAutoModeTextSpeed(value);
+            }
         }
 
         //auto mode skip timer speed
@@ -108,10 +120,11 @@ Item {
             id: autoSkipTimerSpeedLabel
             anchors.top: autoSpeedSlider.bottom
             anchors.topMargin: 6
+            anchors.left: parent.left
+            anchors.leftMargin: 10
             width: root.leftColumnSize
             Text {
-
-                color: "white"
+                color: "#5C5349"
                 font.pixelSize: 20
                 text: "Auto mode skip timer (in seconds):"
             }
@@ -127,9 +140,52 @@ Item {
             stepSize: 1
             to: 20
             value: 20
+            onMoved: {
+                saveAutoModeSkipTimer(value);
+            }
         }
     }
 
+
+    function saveTextPanelOpacity(value) {
+        gameSettings.changeGameSettings(
+            (options) => {
+                options.textPanelOpacity = value;
+            }
+        );
+    }
+
+    function saveTextSpeed(value) {
+        gameSettings.changeGameSettings(
+            (options) => {
+                options.textSpeed = value;
+            }
+        );
+    }
+
+    function saveAutoModeTextSpeed(value) {
+        gameSettings.changeGameSettings(
+            (options) => {
+                options.autoModeTextSpeed = value;
+            }
+        );
+    }
+
+    function saveAutoModeSkipTimer(value) {
+        gameSettings.changeGameSettings(
+            (options) => {
+                options.autoModeSkipTimer = value;
+            }
+        );
+    }
+
+
+    Component.onCompleted: {
+        opacitySlider.value = gameSettings.gameOptions.textPanelOpacity;
+        textSpeedSlider.value = gameSettings.gameOptions.textSpeed;
+        autoSpeedSlider.value = gameSettings.gameOptions.autoModeTextSpeed;
+        autoSkipTimerSpeedSlider.value = gameSettings.gameOptions.autoModeSkipTimer;
+    }
 
     //skip read text or full text ???
 

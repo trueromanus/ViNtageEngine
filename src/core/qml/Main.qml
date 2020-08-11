@@ -34,6 +34,9 @@ GameWindow {
             defaultOptions.autoModeSkipTimer = 3;
             defaultOptions.textSpeed = 60;
             defaultOptions.language = `en`;
+            defaultOptions.musicVolume = 100;
+            defaultOptions.speechVolume = 100;
+            defaultOptions.effectsVolume = 100;
         }
         onLoaded: {
             if (gameSettings.gameOptions.isFullScreen) gameWindow.fullscreen = true;

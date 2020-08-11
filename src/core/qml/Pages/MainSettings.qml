@@ -24,8 +24,8 @@ Item {
     Rectangle {
         x: 60
         y: 100
-        width: 500
-        height: 300
+        width: 700
+        height: 460
         color: "#E3D7C5"
         opacity: .9
     }

@@ -60,7 +60,7 @@ Item {
             anchors.bottomMargin: 4
             anchors.rightMargin: 4
             font.pixelSize: 12
-            text: "version 0.0.2 alpha"
+            text: "version 0.0.2 prealpha"
             color: "#E3D7C5"
         }
 
