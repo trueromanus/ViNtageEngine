@@ -53,3 +53,4 @@ compile_commands.json
 /.vs/slnx.sqlite
 /.vs/ViNtageEngine/v16
 /.vs
+/src/.vs

@@ -20,12 +20,11 @@ int main(int argc, char *argv[])
 
     if (argc > 1) LocalResources::CustomProjectPath = argv[1];
 
-    // use this during development
-    // for PUBLISHING, use the entry point below
-
-    /*felgo.setMainQmlFileName(QStringLiteral("qml/Main.qml"));
+#ifndef QT_DEBUG
+    felgo.setMainQmlFileName(QStringLiteral("qml/Main.qml"));
     engine.load(QUrl(felgo.mainQmlFileName()));
-    felgo.setLicenseKey(PRODUCT_LICENSE_KEY);*/
+    felgo.setLicenseKey(PRODUCT_LICENSE_KEY);
+#endif
 
 
 #ifdef QT_DEBUG

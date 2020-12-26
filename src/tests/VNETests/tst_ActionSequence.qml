@@ -1,6 +1,6 @@
 import QtQuick 2.12
 import QtTest 1.12
-import "../../ViNtageEngine/qml/Objects/"
+import "../../core/qml/Objects/"
 
 Item {
     ActionSequence {
@@ -17,7 +17,7 @@ Item {
         }
 
         function test_singleItemCheckEnd() {
-            const component = Qt.createComponent('../../ViNtageEngine/qml/Objects/ActionItem.qml');
+            const component = Qt.createComponent('../../core/qml/Objects/ActionItem.qml');
             var object = component.createObject(actionSequence);
 
             actionSequence.runNextAction(-1);
@@ -29,7 +29,7 @@ Item {
         }
 
         function test_threeItemsCheckChangeIndex() {
-            const component = Qt.createComponent('../../ViNtageEngine/qml/Objects/ActionItem.qml');
+            const component = Qt.createComponent('../../core/qml/Objects/ActionItem.qml');
             const objects = [];
             for (var i = 0; i < 3; i++) {
                 objects.push(component.createObject(actionSequence));
@@ -55,7 +55,7 @@ Item {
         }
 
         function test_twoItemsCheckEndIndex() {
-            const component = Qt.createComponent('../../ViNtageEngine/qml/Objects/ActionItem.qml');
+            const component = Qt.createComponent('../../core/qml/Objects/ActionItem.qml');
             const objects = [];
             for (var i = 0; i < 2; i++) {
                 objects.push(component.createObject(actionSequence));
@@ -87,7 +87,7 @@ Item {
         }
 
         function test_activatedDeactivatedOrderCheck() {
-            const component = Qt.createComponent('../../ViNtageEngine/qml/Objects/ActionItem.qml');
+            const component = Qt.createComponent('../../core/qml/Objects/ActionItem.qml');
             let activateFirst = false;
             let activateSecond = false;
             let deactivateFirst = false;
@@ -134,7 +134,7 @@ Item {
         }
 
         function test_twoItemsCheckNeedRepeated() {
-            const component = Qt.createComponent('../../ViNtageEngine/qml/Objects/ActionItem.qml');
+            const component = Qt.createComponent('../../core/qml/Objects/ActionItem.qml');
 
             let activateFirst = false;
             let activateSecond = false;

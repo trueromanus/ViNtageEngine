@@ -6,51 +6,18 @@ import "../Objects"
 GameScene {
     id: gameScene
 
-    FillBackgroundImage {
-        targetScene: gameScene
-        source: "../../assets/test111.jpg"
-    }
+    property bool gamePaused: false
 
-    Rectangle {
-        x: 100
-        y: 100
-        width: 100
-        height: 100
-        color: "white"
 
-        MouseArea {
-            anchors.fill: parent
-            onPressed: {
-                gameScene.requestChangeScene(SceneConstants.gameplaySceneName);
-                /*const testObject = {
-                    test1: 10,
-                    bluherka: "dsafsdfasdfasdgdagdafgdjskfkasd;lf;asd;f;lasd",
-                    druher: [1,2,3,4,5,6,7],
-                    muhahumerka: {
-                        argus: 1212,
-                        bruherka: "muherka"
-                    }
-                };
-                gameOptions.saveGameOptions(JSON.stringify(testObject),0);
-                const content = gameOptions.loadGameOptions(0);*/
-            }
-        }
-    }
 
-    Rectangle {
+    //main click area for to go to the next step
+    MouseArea {
         x: 0
-        y: SceneConstants.sceneHeight - 140
+        y: 0
         width: SceneConstants.sceneWidth
-        height: 140
-        opacity: .6
-        color: "black"
-
-        MouseArea {
-            anchors.fill: parent
-            onPressed: {
-                //gameWindow.fullscreen = !gameWindow.fullscreen;
-                actionSequence.runNextAction(-1);
-            }
+        height: SceneConstants.sceneHeight
+        onPressed: {
+            actionSequence.runNextAction(-1);
         }
     }
 
@@ -90,10 +57,22 @@ GameScene {
        }
     }
 
+    // background for text panel
+    Rectangle {
+        id: textPanel
+        color: "#5C5349"
+        anchors.horizontalCenter: gameScene.gameWindowAnchorItem.horizontalCenter
+        width: SceneConstants.sceneWidth - 80
+        height: 120
+        border.color: "#5C5349"
+        border.width: 1
+        radius: 10
+    }
+
+    // main text renderer, draw above text panel
     TextRenderer {
         id: textRenderer
-        x: 50
-        y: SceneConstants.sceneHeight - 130
+        anchors.horizontalCenter: gameScene.gameWindowAnchorItem.horizontalCenter
         width: SceneConstants.sceneWidth - 80
         height: 120
         renderInterval: 60

@@ -1,7 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtTest 1.12
-import "../../ViNtageEngine/qml/Objects/"
+import "../../core/qml/Objects/"
 
 TextRenderer {
     id: textRenderer

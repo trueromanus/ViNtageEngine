@@ -64,6 +64,7 @@ macx {
 }
 
 DISTFILES += \
+    qml/Chapters/HouseChapter.qml \
     qml/Constants/SceneConstants.qml \
     qml/Objects/ActionSequence.qml \
     qml/Objects/ActionItem.qml \
