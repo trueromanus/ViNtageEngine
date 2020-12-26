@@ -8,8 +8,6 @@ GameScene {
 
     property bool gamePaused: false
 
-
-
     //main click area for to go to the next step
     MouseArea {
         x: 0
@@ -19,6 +17,19 @@ GameScene {
         onPressed: {
             actionSequence.runNextAction(-1);
         }
+    }
+
+    //black box background
+    Rectangle {
+        anchors.fill: gameScene.gameWindowAnchorItem
+        color: "black"
+    }
+
+    //interactive background
+    FillBackgroundImage {
+        id: mainBackground
+        targetScene: gameScene
+        source: gameResources.basePath + "/test111.jpg"
     }
 
     Character {
@@ -35,7 +46,7 @@ GameScene {
        frameRate: 6
 
        Sprite {
-           source: "../../assets/idle.png"
+           source: gameResources.basePath + "/idle.png"
        }
     }
 
@@ -53,30 +64,35 @@ GameScene {
        frameRate: 6
 
        Sprite {
-           source: "../../assets/creature2.png"
+           source: gameResources.basePath + "/creature2.png"
        }
     }
 
-    // background for text panel
-    Rectangle {
-        id: textPanel
-        color: "#5C5349"
+    Item {
         anchors.horizontalCenter: gameScene.gameWindowAnchorItem.horizontalCenter
+        anchors.bottom: gameScene.gameWindowAnchorItem.bottom
+        anchors.bottomMargin: 10
         width: SceneConstants.sceneWidth - 80
         height: 120
-        border.color: "#5C5349"
-        border.width: 1
-        radius: 10
-    }
 
-    // main text renderer, draw above text panel
-    TextRenderer {
-        id: textRenderer
-        anchors.horizontalCenter: gameScene.gameWindowAnchorItem.horizontalCenter
-        width: SceneConstants.sceneWidth - 80
-        height: 120
-        renderInterval: 60
-        fontPixelSize: 18
+        // background for text panel
+        Rectangle {
+            id: textPanel
+            color: "#5C5349"
+            anchors.fill: parent
+            border.color: "#5C5349"
+            border.width: 1
+            radius: 10
+        }
+
+        // main text renderer, draw above text panel
+        TextRenderer {
+            id: textRenderer
+            anchors.fill: parent
+            anchors.margins: 10
+            renderInterval: 60
+            fontPixelSize: 18
+        }
     }
 
     ListModel {

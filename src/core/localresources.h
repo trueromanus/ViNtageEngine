@@ -12,9 +12,9 @@ private:
     QString m_BasePath;
 
 public:
-    explicit LocalResources(QObject *parent = nullptr);
+    static QString AppIdentifier;
 
-    static QString CustomProjectPath;
+    explicit LocalResources(QObject *parent = nullptr);
 
     QString basePath() const { return m_BasePath; };
 

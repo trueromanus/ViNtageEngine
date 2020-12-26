@@ -2,12 +2,27 @@
 #include <FelgoApplication>
 #include <QQmlApplicationEngine>
 #include <FelgoLiveClient>
+#include <QQmlContext>
 #include "globaloptions.h"
 #include "gameoptions.h"
 #include "localresources.h"
+#include <QDebug>
+
+QString engineVersion = "0.0.1";
 
 int main(int argc, char *argv[])
 {
+#ifndef QT_DEBUG
+    if (argc == 1) {
+        qInfo() << "ViN engine version " + engineVersion;
+        qInfo() << "Command format:";
+        qInfo() << "\tvin.exe <app identifier> [options]";
+        qInfo() << "\nOptions:";
+        qInfo() << "\t--debug - enable debug environment";
+        return 0;
+    }
+#endif
+
     QApplication app(argc, argv);
 
     FelgoApplication felgo;
@@ -18,7 +33,17 @@ int main(int argc, char *argv[])
     qmlRegisterType<GameOptions>("Vintage", 1, 0, "GameOptions");
     qmlRegisterType<LocalResources>("Vintage", 1, 0, "LocalResources");
 
-    if (argc > 1) LocalResources::CustomProjectPath = argv[1];
+#ifdef QT_DEBUG
+    QString appIdentifier = "quietandpiecelife";
+#else
+    QString appIdentifier = argv[1];
+#endif
+
+    LocalResources::AppIdentifier = appIdentifier;
+
+    engine.rootContext()->setContextProperty("ViNversion", engineVersion);
+    engine.rootContext()->setContextProperty("AppVersion", "0.0.1");
+    engine.rootContext()->setContextProperty("AppIdentifier", appIdentifier);
 
 #ifndef QT_DEBUG
     felgo.setMainQmlFileName(QStringLiteral("qml/Main.qml"));

@@ -14,7 +14,7 @@ Item {
     FillBackgroundImage {
         id: mainBackground
         targetScene: gameScene
-        source: "../../assets/test111.jpg"
+        source: gameResources.basePath + "/test111.jpg"
     }
 
 }

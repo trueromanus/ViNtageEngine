@@ -8,10 +8,7 @@ GameOptions {
     signal saveScreenshoot(string path, int slot)
 
     onGameOptionsSaved: {
-        console.log("game options!!!!!");
         if (!screenshootTarget) return;
-
-        console.log("slot number");
 
         const slotNumber = slot;
         const savedPath = path;
